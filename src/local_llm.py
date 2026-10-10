@@ -1,32 +1,31 @@
-import os
 
+import os
 import ollama
 
 
 class LocalLLM:
-    """Generate responses using local Ollama or hosted Mistral."""
+    """Generate responses using Gemini or local Ollama."""
 
     def __init__(self, model="qwen2.5:3b"):
         self.model = model
-        self.mistral_model = os.getenv(
-            "MISTRAL_MODEL",
-            "mistral-small-2603"
+        self.gemini_model = os.getenv(
+            "GEMINI_MODEL",
+            "gemini-3.8-flash"
         )
 
     @staticmethod
-    def _get_mistral_api_key():
-        """Read the API key from environment variables or Streamlit secrets."""
+    def _get_gemini_api_key():
+        """Read the key from environment variables or Streamlit secrets."""
 
-        api_key = os.getenv("MISTRAL_API_KEY")
+        api_key = os.getenv("GEMINI_API_KEY")
 
         if api_key:
             return api_key
 
         try:
             import streamlit as st
-            return st.secrets.get("MISTRAL_API_KEY")
+            return st.secrets.get("GEMINI_API_KEY")
         except Exception:
-            # No Streamlit secret configured; use local Ollama.
             return None
 
     def generate_response(
@@ -38,8 +37,7 @@ class LocalLLM:
         prompt = f"""
 You are a professional customer support assistant.
 
-Your task is to draft a helpful, polite, and empathetic
-response to the customer's message.
+Draft a helpful, polite, and empathetic response.
 
 CUSTOMER MESSAGE:
 {customer_message}
@@ -51,48 +49,40 @@ APPROVED SUPPORT GUIDANCE:
 {support_guidance}
 
 Instructions:
-1. Write a professional and empathetic response.
-2. Use the approved support guidance.
-3. Do not invent policies, refund approvals, delivery dates,
+1. Use the approved support guidance.
+2. Do not invent policies, refund approvals, delivery dates,
    or actions that have not been confirmed.
-4. If the customer has already provided an order ID,
-   do not ask for it again.
-5. If an order ID is provided, acknowledge it where relevant.
-6. Ask only for information that is genuinely missing.
-7. Do not claim that you checked an account or tracking
-   system because you do not have access to those systems.
-8. Keep the response clear, concise, and customer-friendly.
-9. Return only the suggested response, without analysis.
+3. Do not ask for an order ID if one was already provided.
+4. Ask only for information that is genuinely missing.
+5. Do not claim to have checked customer accounts or tracking
+   systems that you cannot access.
+6. Keep the response concise and customer-friendly.
+7. Return only the suggested response.
 """
 
-        api_key = self._get_mistral_api_key()
+        api_key = self._get_gemini_api_key()
 
-        # Use the hosted API when a key is configured.
+        # Online deployment: use Gemini when a key is configured.
         if api_key:
-            from mistralai.client import Mistral
+            from google import genai
 
-            with Mistral(api_key=api_key) as client:
-                result = client.chat.complete(
-                    model=self.mistral_model,
-                    messages=[
-                        {
-                            "role": "user",
-                            "content": prompt
-                        }
-                    ],
-                    temperature=0.1
-                )
+            client = genai.Client(api_key=api_key)
 
-            content = result.choices[0].message.content
+            result = client.models.generate_content(
+                model=self.gemini_model,
+                contents=prompt
+            )
 
-            if not isinstance(content, str) or not content.strip():
+            content = result.text
+
+            if not content or not content.strip():
                 raise RuntimeError(
-                    "Mistral returned an empty response."
+                    "Gemini returned an empty response."
                 )
 
             return content.strip()
 
-        # Otherwise, use the local Ollama server.
+        # Local development: use Ollama and Qwen.
         result = ollama.chat(
             model=self.model,
             messages=[
