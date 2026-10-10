@@ -1,0 +1,126 @@
+
+[
+    {
+        "category": "Login Issues",
+        "queries": [
+            "I cannot log in to my account.",
+            "I am unable to login.",
+            "I can't access my account.",
+            "The login is not working.",
+            "I am having trouble signing in.",
+            "Why can't I log into my account?"
+        ],
+        "response": "I'm sorry you're experiencing login issues. Please verify your email address and password. If the issue persists, try resetting your password using the Forgot Password option."
+    },
+    {
+        "category": "Payment Issues",
+        "queries": [
+            "My payment has failed.",
+            "My payment is not going through.",
+            "I cannot complete my payment.",
+            "The payment was declined.",
+            "Why did my payment fail?",
+            "I am unable to pay for my order."
+        ],
+        "response": "I'm sorry your payment was unsuccessful. Please verify your payment details and ensure sufficient funds are available. You may also contact your bank to check whether the transaction was blocked."
+    },
+    {
+        "category": "Refund Requests",
+        "queries": [
+            "I want a refund for my order.",
+            "I need to get my money back.",
+            "How can I request a refund?",
+            "Please refund my order.",
+            "I want my payment refunded.",
+            "Can I get a refund for my purchase?"
+        ],
+        "response": "I can help you with your refund request. Please share your order ID so we can review the transaction and explain the applicable refund process."
+    },
+    {
+        "category": "Account Access",
+        "queries": [
+            "My account has been locked.",
+            "I am locked out of my account.",
+            "I cannot access my account.",
+            "My account is blocked.",
+            "Why is my account locked?",
+            "I need help unlocking my account."
+        ],
+        "response": "I'm sorry you're having trouble accessing your account. Please follow the account recovery instructions or contact our support team for assistance with unlocking your account."
+    },
+    {
+        "category": "Order Tracking",
+        "queries": [
+            "Where is my order?",
+            "How can I track my order?",
+            "I want to know where my package is.",
+            "Can you give me an update on my delivery?",
+            "What is the status of my order?",
+            "Please help me track my package."
+        ],
+        "response": "I'd be happy to help you track your order. Please provide your order ID so we can check the latest delivery status."
+    },
+    {
+        "category": "Delivery Issues",
+        "queries": [
+            "My order has not arrived yet.",
+            "My parcel is late.",
+            "My package hasn't arrived.",
+            "My delivery is delayed.",
+            "I haven't received my order.",
+            "My package is overdue.",
+            "The delivery is taking too long.",
+            "Why is my parcel late?"
+        ],
+        "response": "I'm sorry your order hasn't arrived as expected. Please share your order ID so we can review the delivery status and help you determine the next steps."
+    },
+    {
+        "category": "Technical Issues",
+        "queries": [
+            "The application keeps crashing.",
+            "The app is not working.",
+            "The application crashes whenever I open it.",
+            "I am facing a technical problem.",
+            "The website is not loading.",
+            "The app stopped working."
+        ],
+        "response": "I'm sorry you're experiencing technical difficulties. Please restart the application and check whether an update is available. If the problem continues, share your device details and any error messages."
+    },
+    {
+        "category": "Subscription",
+        "queries": [
+            "I want to cancel my subscription.",
+            "How do I cancel my subscription?",
+            "Please cancel my subscription.",
+            "I don't want my subscription anymore.",
+            "I want to stop my subscription.",
+            "Can you help me cancel my plan?"
+        ],
+        "response": "I can help you with your subscription cancellation. Please visit your account's subscription settings and follow the cancellation instructions. Review any applicable terms before confirming."
+    },
+    {
+        "category": "Password Reset",
+        "queries": [
+            "I forgot my password.",
+            "I cannot remember my password.",
+            "How do I reset my password?",
+            "I need to change my password.",
+            "I lost my account password.",
+            "Please help me reset my password."
+        ],
+        "response": "No problem! Please select Forgot Password on the login page and follow the instructions sent to your registered email address to reset your password."
+    },
+    {
+        "category": "Customer Complaints",
+        "queries": [
+            "I am unhappy with your service.",
+            "I want to make a complaint.",
+            "Your service has been disappointing.",
+            "I am not satisfied with the service.",
+            "I am very disappointed with my experience.",
+            "I want to report a problem with your service."
+        ],
+        "response": "I'm sorry we haven't met your expectations. We appreciate your feedback and would like to understand what went wrong so we can help resolve your concern."
+    }
+]
+
